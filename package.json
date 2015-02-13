@@ -4,7 +4,8 @@
   "description": "Javascript Object Format Validator (Not a white Darth Vader)",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "transpile": "rm -rf compiled && 6to5 --out-dir compiled/src src/ && 6to5 --out-dir compiled/test test/",
+    "test": "npm run transpile && mocha compiled/test"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/jsanchesleao/stormtrooper",
   "devDependencies": {
-    "chai": "~2.0.0"
+    "chai": "~2.0.0",
+    "grunt-6to5": "~3.0.1",
+    "grunt": "~0.4.5"
   },
   "dependencies": {
     "ramda": "~0.9.1",

@@ -1,3 +1,4 @@
+"use strict";
 var chai = require('chai');
 var expect = chai.expect;
 var st = require('../src');
@@ -6,9 +7,9 @@ var R = require('ramda');
 var _ = R.__;
 var gt = R.gt;
 
-describe('Stormtrooper Validator', () => {
+describe('Stormtrooper Validator', function() {
 
-  it('can apply a validation rule against a value', () => {
+  it('can apply a validation rule against a value', function() {
 
     var validationRule = {
       name: 'positive',
@@ -23,10 +24,12 @@ describe('Stormtrooper Validator', () => {
 
   });
 
-  it('can apply a group of validation rules against a single value, aggregating the failures', () => {
+  it('can apply a group of validation rules against a single value, aggregating the failures', function() {
     var odd = {
       name: 'odd',
-      test: x => (x % 2) === 1
+      test: function(x) {
+        return (x % 2) === 1;
+      }
     };
 
     var positive = {
